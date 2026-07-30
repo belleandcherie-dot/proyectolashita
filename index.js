@@ -13,7 +13,7 @@ const openai = new OpenAI({
 const PORT = process.env.PORT || 8080;
 
 const SYSTEM_PROMPT = `
-Eres Isabella Rojas ❤️, una asistente humana, cálida, espiritual y cercana que responde dudas por WhatsApp sobre el libro digital "Cuando Dios Habla".
+Eres Jessi ❤️, una asistente humana, cálida, experta en belleza, amigable y cercana que responde dudas por WhatsApp sobre el programa digital  "metodo lashista studio rentable".
 
 Tu trabajo es responder dudas de forma NATURAL, BREVE y HUMANA, como si fueras una persona real atendiendo con cariño.
 
@@ -40,26 +40,29 @@ REGLAS:
 - NO presiones.
 - NO inventes información.
 - NO menciones correo electrónico.
-- NO digas que el libro es físico.
+- NO digas que el material es físico.
 
 INFORMACIÓN REAL:
-- El libro es DIGITAL en PDF.
-- El libro NO es físico.
-- El PDF YA fue enviado anteriormente por WhatsApp.
-- El usuario lo puede encontrar más arriba en esta misma conversación.
-- El libro está basado en la Biblia.
-- No pertenece a una religión específica.
-- No es exclusivamente católico.
-- Puede estudiarse con cualquier Biblia.
-- Las referencias de apoyo son:
-  - 70 MXN como gesto de gratitud
-  - 90 MXN para apoyar el proyecto
-  - 120 MXN para que este mensaje llegue a más personas
+- El material es DIGITAL.
+- El material se compone de un conjunto de pdfs, plantillas, tutoriales ,guias y videos.
+- El material NO es físico.
+- El Material será enviado tan pronto se valide el pago por WhatsApp.
+- Se enviara una cortesia de material "Pestañas pelo a pelo" anteriormente para que se den una idea de la calidad del material.
+- El usuario  puede encontrar más arriba la guía de cortesia "Pestañas pelo a pelo" en esta misma conversación.
+- El material está basado en la experiencia y conocimiento técnico como Lashista.
+- El material esta enfocado para que aprendas en una metodología ordenada y sistematica.
+-El programa no necesita experiencia , puedes empezar si no tienes ningún conocimiento en pestañas o maquillaje
+-Puede estudiarse el material en cualquier lugar y en cualquier momento.
+- El material se entregara  en links de Google drive para que accedas a la información.
+- El precio de venta es:
+  - 19.900  cop  Solo hoy- Precio de Lanzamiento
+  - El precio regular del programa es de $99.900 COP
+
 
 OBJETIVO:
-Después de resolver la duda de forma amable y humana, dirige suavemente a la persona al apoyo del proyecto espiritual mediante:
-- transferencia bancaria
-- depósito en Oxxo
+Después de resolver la duda de forma amable y humana, dirige suavemente a la persona al pago del "Método Lashista Studio Rentable":
+- transferencia Bre-b (Llave)
+- Pago en Nequi/Daviplata
 
 Haz que el cierre se sienta natural, amable y espiritual, nunca como presión de venta.
 `;
@@ -80,12 +83,12 @@ function limpiarRespuesta(texto) {
   texto = String(texto || "").trim();
 
   texto = texto
-    .replace(/^¡?\s*hola\s*[😊🙏❤️✨🌿,\.\!]*\s*/gi, "")
-    .replace(/^gracias por preguntar\s*[😊🙏❤️✨🌿,\.\!]*\s*/gi, "")
-    .replace(/^buenos días\s*[😊🙏❤️✨🌿,\.\!]*\s*/gi, "")
-    .replace(/^buenos dias\s*[😊🙏❤️✨🌿,\.\!]*\s*/gi, "")
-    .replace(/^buenas tardes\s*[😊🙏❤️✨🌿,\.\!]*\s*/gi, "")
-    .replace(/^buenas noches\s*[😊🙏❤️✨🌿,\.\!]*\s*/gi, "");
+    .replace(/^¡?\s*hola\s*[😊❤️✨,\.\!]*\s*/gi, "")
+    .replace(/^gracias por preguntar\s*[😊❤️✨,\.\!]*\s*/gi, "")
+    .replace(/^buenos días\s*[😊❤️✨,\.\!]*\s*/gi, "")
+    .replace(/^buenos dias\s*[😊❤️✨,\.\!]*\s*/gi, "")
+    .replace(/^buenas tardes\s*[😊❤️✨,\.\!]*\s*/gi, "")
+    .replace(/^buenas noches\s*[😊❤️✨,\.\!]*\s*/gi, "");
 
   texto = texto
     .replace(/¿[^?]*(quieres|te interesa|te gustaría|te gustaria|te cuento|te explico|te ayudo|puedo ayudarte|hay algo más|hay algo mas|te parece|te comparto|te paso)[^?]*\?/gi, "")
@@ -98,17 +101,19 @@ function limpiarRespuesta(texto) {
 
 function cierrePago() {
   const cierres = [
-    `💌 Puedes apoyar este proyecto espiritual por transferencia bancaria o depósito en Oxxo ✨
+    `💌 Puedes adquirir el método lashista por transferencia bancaria(Bre-b) o Pago por Nequi/Daviplata✨
 
-¿Cuál método prefieres? 🙏`,
+¿Cuál método prefieres? 🩷`,
 
-    `💌 Si deseas apoyar este proyecto espiritual, puedes hacerlo por transferencia bancaria o depósito en Oxxo ✨
+    `💌 Si deseas comprar nuestro método , puedes hacerlo por transferencia bancaria(Bre-b) o Pago por Nequi/Daviplata ✨
 
-¿Qué método prefieres? 🙏`,
+¿Qué método prefieres? 🩷`,
 
-    `💌 Para apoyar este proyecto espiritual puedes elegir transferencia bancaria o depósito en Oxxo ✨
+    `💌 Para obtener el método de Cejas y Pestañas  puedes elegir transferencia bancaria(Bre-b) o Pago por Nequi/Daviplata ✨
 
-¿Cuál opción prefieres? 🙏`,
+
+
+¿Cuál opción prefieres? 🩷`,
   ];
 
   return elegirAleatoria(cierres);
@@ -128,28 +133,22 @@ ${cierrePago()}`;
 
 function respuestaDirecta(textoNormalizado) {
   if (
-    textoNormalizado.includes("catolico") ||
-    textoNormalizado.includes("catolica") ||
-    textoNormalizado.includes("religion") ||
-    textoNormalizado.includes("religioso") ||
-    textoNormalizado.includes("cristiano") ||
-    textoNormalizado.includes("cristiana")
+    textoNormalizado.includes("incluye") ||
+    textoNormalizado.includes("trae") ||
+    textoNormalizado.includes("contiene") ||
+    textoNormalizado.includes("viene") ||
+    textoNormalizado.includes("clases") ||
+    textoNormalizado.includes("tecnicas")
   ) {
-    const respuestasReligion = [
-      `No es un libro católico como tal, ni pertenece a una religión específica 🌿
+    const respuestasTrae = [
+      `Incluye videos paso a paso, guías en PDF, material de apoyo y 7 bonos diseñados para ayudarte a aprender pestañas, cejas y comenzar con mayor seguridad.🌿.`,
 
-Es una guía basada en la Biblia que puedes estudiar con cualquier Biblia que tengas en casa.`,
+      `Recibirás una metodología completa con clases en video, manuales digitales y recursos adicionales para acompañar tu aprendizaje.🥰`,
 
-      `No pertenece a una religión en específico 😊
-
-Es un material basado en la Biblia, pensado para acompañarte en tu vida espiritual de una forma sencilla y cercana.`,
-
-      `Es una guía bíblica, no un libro religioso de una denominación específica 🌿
-
-Puedes estudiarlo con la Biblia que tengas en casa, sin importar tu tradición religiosa.`,
+      `El programa reúne todo lo necesario para comenzar: videos, PDFs, técnicas de pestañas y cejas, además de bonos exclusivos.`,
     ];
 
-    return agregarCierre(elegirAleatoria(respuestasReligion));
+    return agregarCierre(elegirAleatoria(respuestasTrae));
   }
 
   if (
@@ -167,60 +166,57 @@ Puedes estudiarlo con la Biblia que tengas en casa, sin importar tu tradición r
     textoNormalizado.includes("llega")
   ) {
     const respuestasEnvio = [
-      `El libro es completamente digital 😊
+      `El material es completamente digital 😊
 
-El PDF ya fue enviado anteriormente aquí mismo en WhatsApp, así que solo necesitas abrirlo o descargarlo desde esta conversación 🌿`,
+El acceso se entrega únicamente después de confirmar el pago. Recibirás un enlace de Google Drive con todos los videos y guías del programa 🌿`,
 
-      `No es un libro físico 🙏
+      `El material NO  físico 🙏
 
-Es un material digital en PDF que ya te compartimos anteriormente en esta misma conversación de WhatsApp para que puedas leerlo cuando quieras ✨`,
+Recibirás el acceso al Método Lash Studio Rentable™ directamente por WhatsApp mediante un enlace de Google Drive. Podrás ingresar cuando quieras e imprimirlo. ✨`,
 
-      `El material ya fue enviado por WhatsApp 😊
+      `Tan pronto nos envíen el comprobante de tu pago 😊
 
-Lo encuentras más arriba en esta conversación. Solo necesitas descargar el PDF en tu celular o computadora 🌿`,
+Te enviaremos el enlace de acceso por WhatsApp. El material es digital y podrás verlo las veces que necesites.Incluso podras imprimirlo y argollarlo para practicar🌿`,
 
       `La entrega es digital 😊
 
-El PDF ya está enviado más arriba en este mismo chat de WhatsApp. No llega nada físico ni se manda por correo; solo debes descargarlo desde aquí mismo 🌿`,
+Te compartiremos el acceso completo al curso por WhatsApp para que empieces a estudiar de inmediato. ✨`,
     ];
 
     return agregarCierre(elegirAleatoria(respuestasEnvio));
   }
 
   if (
-    textoNormalizado.includes("cuanto") ||
-    textoNormalizado.includes("cuesta") ||
+    textoNormalizado.includes("Pagar") ||
     textoNormalizado.includes("precio") ||
     textoNormalizado.includes("costo") ||
-    textoNormalizado.includes("vale") ||
-    textoNormalizado.includes("apoyo") ||
-    textoNormalizado.includes("apoyar") ||
-    textoNormalizado.includes("aportacion") ||
-    textoNormalizado.includes("donacion") ||
+    textoNormalizado.includes("Formas") ||
+    textoNormalizado.includes("tarjeta") ||
+    textoNormalizado.includes("precio") ||
+    textoNormalizado.includes("cuesta") ||
+    textoNormalizado.includes("compro") ||
+    textoNormalizado.includes("transferir") ||
     textoNormalizado.includes("pagar") ||
     textoNormalizado.includes("pago")
   ) {
     const respuestasPago = [
-      `El libro se comparte como una bendición 🙏
+      `En Colombia puedes pagar por Nequi, Daviplata, transferencia o Bre-B. 
+Si estás fuera del país, aceptamos PayPal.
+💖 *SOLO HOY* 🔥
+Puedes acceder por *$19.900 COP* o $10 USD Fuera de Col
+~(Antes $99.900 COP)~`,
 
-Si nace en tu corazón apoyar este proyecto espiritual, las referencias son:
-🌿 70 MXN como gesto de gratitud
-🌿 90 MXN para apoyar el proyecto
-🌿 120 MXN para que este mensaje llegue a más personas`,
+      `Para recibir el  Material puedes pagar: 😊
 
-      `El material ya fue compartido con mucho cariño 😊
+Muy sencillo: En Colombia Nequi/Daviplata o Llave, envías el soporte por WhatsApp y activamos tu acceso.:
+💖 *SOLO HOY* 🔥
+Puedes acceder por *$19.900 COP* o $10 USD Fuera de Col
+~(Antes $99.900 COP)`,
 
-Para apoyar el proyecto, puedes elegir una de estas referencias:
-🌿 70 MXN como gesto de gratitud
-🌿 90 MXN para apoyar el proyecto
-🌿 120 MXN para ayudar a que llegue a más personas`,
-
-      `Este proyecto se sostiene con el apoyo de las personas que reciben el material 🙏
-
-Puedes apoyar con:
-🌿 70 MXN como gesto de gratitud
-🌿 90 MXN para apoyar directamente el proyecto
-🌿 120 MXN para que este mensaje llegue a más personas`,
+      `Aceptamos varios medios de pago COL: Nequi/ Daviplata o Llave Paypal si estas fuera de COL.
+Tendras acceso tan pronto validemos el pago recibirás el acceso.💖 *SOLO HOY* 🔥
+Puedes acceder por *$19.900 COP* o $10 USD Fuera de Col
+~(Antes $99.900 COP)`,
     ];
 
     return agregarCierre(elegirAleatoria(respuestasPago));
