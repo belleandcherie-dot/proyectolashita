@@ -162,7 +162,7 @@ function respuestaDirecta(textoNormalizado) {
     textoNormalizado.includes("recibir") ||
     textoNormalizado.includes("recibo") ||
     textoNormalizado.includes("archivo") ||
-    textoNormalizado.includes("entrego") ||
+    textoNormalizado.includes("presencial") ||
     textoNormalizado.includes("llega")
   ) {
     const respuestasEnvio = [
