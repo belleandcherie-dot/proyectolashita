@@ -160,10 +160,10 @@ function respuestaDirecta(textoNormalizado) {
     textoNormalizado.includes("digital") ||
     textoNormalizado.includes("descargar") ||
     textoNormalizado.includes("recibir") ||
-    textoNormalizado.includes("recibo") ||
+    textoNormalizado.includes("pense") ||
     textoNormalizado.includes("ubicacion") ||
     textoNormalizado.includes("presencial") ||
-    textoNormalizado.includes("llega")
+    textoNormalizado.includes("pense")
   ) {
     const respuestasEnvio = [
       `El material es completamente digital 😊
