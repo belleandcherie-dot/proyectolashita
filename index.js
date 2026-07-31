@@ -161,7 +161,7 @@ function respuestaDirecta(textoNormalizado) {
     textoNormalizado.includes("descargar") ||
     textoNormalizado.includes("recibir") ||
     textoNormalizado.includes("recibo") ||
-    textoNormalizado.includes("archivo") ||
+    textoNormalizado.includes("ubicacion") ||
     textoNormalizado.includes("presencial") ||
     textoNormalizado.includes("llega")
   ) {
