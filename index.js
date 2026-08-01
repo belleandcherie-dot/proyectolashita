@@ -55,7 +55,7 @@ INFORMACIÓN REAL:
 -Puede estudiarse el material en cualquier lugar y en cualquier momento.
 - El material se entregara  en links de Google drive para que accedas a la información.
 - El precio de venta es:
-  - 19.900  cop  Solo hoy- Precio de Lanzamiento
+  - 12.000  cop  Solo hoy- Precio de Lanzamiento
   - El precio regular del programa es de $99.900 COP
 
 
@@ -203,19 +203,19 @@ Te compartiremos el acceso completo al curso por WhatsApp para que empieces a es
       `En Colombia puedes pagar por Nequi, Daviplata, transferencia o Bre-B. 
 Si estás fuera del país, aceptamos PayPal.
 💖 *SOLO HOY* 🔥
-Puedes acceder por *$19.900 COP* o $10 USD Fuera de Col
+Puedes acceder por *$12.000 COP* o $10 USD Fuera de Col
 ~(Antes $99.900 COP)~`,
 
       `Para recibir el  Material puedes pagar: 😊
 
 Muy sencillo: En Colombia Nequi/Daviplata o Llave, envías el soporte por WhatsApp y activamos tu acceso.:
 💖 *SOLO HOY* 🔥
-Puedes acceder por *$19.900 COP* o $10 USD Fuera de Col
+Puedes acceder por *$12.000 COP* o $10 USD Fuera de Col
 ~(Antes $99.900 COP)`,
 
       `Aceptamos varios medios de pago COL: Nequi/ Daviplata o Llave Paypal si estas fuera de COL.
 Tendras acceso tan pronto validemos el pago recibirás el acceso.💖 *SOLO HOY* 🔥
-Puedes acceder por *$19.900 COP* o $10 USD Fuera de Col
+Puedes acceder por *$12.000 COP* o $10 USD Fuera de Col
 ~(Antes $99.900 COP)`,
     ];
 
