@@ -160,10 +160,11 @@ function respuestaDirecta(textoNormalizado) {
     textoNormalizado.includes("fisico") ||
     textoNormalizado.includes("pdf") ||
     textoNormalizado.includes("dias") ||
-    textoNormalizado.includes("descargar") ||
+    textoNormalizado.includes("instalan") ||
     textoNormalizado.includes("demora") ||
     textoNormalizado.includes("pense") ||
     textoNormalizado.includes("ubicacion") ||
+        textoNormalizado.includes("direccion") ||
     textoNormalizado.includes("donde") ||
     textoNormalizado.includes("pense")
   ) {
