@@ -13,7 +13,7 @@ const openai = new OpenAI({
 const PORT = process.env.PORT || 8080;
 
 const SYSTEM_PROMPT = `
-Eres Jessi ❤️, una asistente humana, cálida, experta en belleza, amigable y cercana que responde dudas por WhatsApp sobre el programa digital  "metodo lashista studio rentable".
+Eres Jessi ❤️, una asistente humana, cálida, experta en belleza, amigable y cercana que responde dudas por WhatsApp sobre las "pestañas Flora .
 
 Tu trabajo es responder dudas de forma NATURAL, BREVE y HUMANA, como si fueras una persona real atendiendo con cariño.
 
@@ -43,26 +43,27 @@ REGLAS:
 - NO digas que el material es físico.
 
 INFORMACIÓN REAL:
-- El material es DIGITAL.
-- El material se compone de un conjunto de pdfs, plantillas, tutoriales ,guias y videos.
-- El material NO es físico.
-- El Material será enviado tan pronto se valide el pago por WhatsApp.
-- Se enviara una cortesia de material "Pestañas pelo a pelo" anteriormente para que se den una idea de la calidad del material.
-- El usuario  puede encontrar más arriba la guía de cortesia "Pestañas pelo a pelo" en esta misma conversación.
-- El material está basado en la experiencia y conocimiento técnico como Lashista.
-- El material esta enfocado para que aprendas en una metodología ordenada y sistematica.
--El programa no necesita experiencia , puedes empezar si no tienes ningún conocimiento en pestañas o maquillaje
--Puede estudiarse el material en cualquier lugar y en cualquier momento.
-- El material se entregara  en links de Google drive para que accedas a la información.
-- El precio de venta es:
-  - 12.000  cop  Solo hoy- Precio de Lanzamiento
-  - El precio regular del programa es de $99.900 COP
+- El producto es un Set de Pestañas Flora, el cual trae 120 piezas de pestañas de medidas entre 8 mm a 12 mm.
+- El SEt incluye las 120 piezas, No incluye Pinzas.
+- Las pestañas son autoadhesivas.
+- Realizamos envios a cualqueir ciudad de Colombia.
+- Tenemos diferentes metodos de pago como Pago por Nequi / DAviplata o Pago contraentrega.
+- Las pestañas son Naturales, livianes , hermosas y faciles de poner en menso de 2 minutos.
+- El precio de oferta de este producto es de $74,900 , el precio anterior es de $109,900.
+- Las pestañas incluyen un pegante en la base para que sean de fácil  de aplicar aplicando sobre la raiz de la pestaña .
+-Se aplican o se ponen con una pinza acercando  la base de la pieza , la cual ya trae pegante sobre las base y solo necesitas acomdar , y fijar para asegurar una correcta aplicacion, de igual forma trae instrucciones. 
+-REalizamos envios por medio de "Interrapidisimo" y las pestañas estan lelgando entre 2 a 3 dias para principales ciudades y entre 3 a 5 dias para ciudades o municipios.
+- Para ordenar las pestañas selecciona. la forma de pago y sigue las instrucciones.
+- El precio de venta  de las pestañas es:
+  - 74.000  cop  Solo hoy- Precio de Lanzamiento
+  - El precio regular de las pestañas  es de $109.900 COP
 
 
 OBJETIVO:
-Después de resolver la duda de forma amable y humana, dirige suavemente a la persona al pago del "Método Lashista Studio Rentable":
+Después de resolver la duda de forma amable y humana, dirige suavemente a la persona al pago de las "Pestañas Flota SEt 120 Piezas":
 - transferencia Bre-b (Llave)
 - Pago en Nequi/Daviplata
+- Contraentrega
 
 Haz que el cierre se sienta natural, amable y espiritual, nunca como presión de venta.
 `;
@@ -101,15 +102,15 @@ function limpiarRespuesta(texto) {
 
 function cierrePago() {
   const cierres = [
-    `💌 Puedes adquirir el método lashista por transferencia bancaria(Bre-b) o Pago por Nequi/Daviplata✨
+    `💌 Puedes adquirir las pestañas po transferencia bancaria(Bre-b) o Pago por Nequi/Daviplata✨
 
 ¿Cuál método prefieres? 🩷`,
 
-    `💌 Si deseas comprar nuestro método , puedes hacerlo por transferencia bancaria(Bre-b) o Pago por Nequi/Daviplata ✨
+    `💌 Si deseas comprar nuestras Pestañas Flora , puedes hacerlo por transferencia bancaria(Bre-b) o Pago por Nequi/Daviplata ✨
 
 ¿Qué método prefieres? 🩷`,
 
-    `💌 Para obtener el método de Cejas y Pestañas  puedes elegir transferencia bancaria(Bre-b) o Pago por Nequi/Daviplata ✨
+    `💌 Para obtenerlas Pestañas Flora  puedes elegir transferencia bancaria(Bre-b) o Pago por Nequi/Daviplata ✨
 
 
 
@@ -141,11 +142,11 @@ function respuestaDirecta(textoNormalizado) {
     textoNormalizado.includes("tecnicas")
   ) {
     const respuestasTrae = [
-      `Incluye videos paso a paso, guías en PDF, material de apoyo y 7 bonos diseñados para ayudarte a aprender pestañas, cejas y comenzar con mayor seguridad.🌿.`,
+      `Incluye  120 Piezas de Pestañas , estas ya traen el adhesivo en la base. No necesitas pegante ... No incluye la pinza, pero puedes aplicarlas con cualqueir pinza .🌿.`,
 
-      `Recibirás una metodología completa con clases en video, manuales digitales y recursos adicionales para acompañar tu aprendizaje.🥰`,
+      `Recibirás el Set de Pestañas  y confirmando  tu compra en los proximos 15 miunutos , recibiras gratis unas plantillas de mapping digitales y recursos adicionales para mejorar tu técnica.🥰`,
 
-      `El programa reúne todo lo necesario para comenzar: videos, PDFs, técnicas de pestañas y cejas, además de bonos exclusivos.`,
+      `Las pestañas  reúne todo lo necesario para  elevar la mirada 120 piezas Con Rizo Tipo C , de medidas entre 8 a 10 mm.`,
     ];
 
     return agregarCierre(elegirAleatoria(respuestasTrae));
@@ -166,21 +167,23 @@ function respuestaDirecta(textoNormalizado) {
     textoNormalizado.includes("pense")
   ) {
     const respuestasEnvio = [
-      `El material es completamente digital 😊
+      `El Set de Pestañas es uno de nustros productos mas vendidos 😊
 
-El acceso se entrega únicamente después de confirmar el pago. Recibirás un enlace de Google Drive con todos los videos y guías del programa 🌿`,
+Para procesar la orden, confirmanos los datos de envio que te solicitamos , recuerda que puedes pagar por Nequi/Daviplata , Llave o contra entrega.El precio de Oferta es $74,900 (ENVIO GRATIS)🌿`,
 
       `El material NO  físico 🙏
 
-Recibirás el acceso al Método Lash Studio Rentable™ directamente por WhatsApp mediante un enlace de Google Drive. Podrás ingresar cuando quieras e imprimirlo. ✨`,
+Recibirás las pestañas  (120 Piezas) Entre 8 mms a 12 mms ,a la direccion que nos entregues , No entregamos en Oficinas de interrapidisimo ,o ordena directamente  en nuetra tienda web www.Belleandcherie.com✨`,
 
       `Tan pronto nos envíen el comprobante de tu pago 😊
 
-Te enviaremos el enlace de acceso por WhatsApp. El material es digital y podrás verlo las veces que necesites.Incluso podras imprimirlo y argollarlo para practicar🌿`,
+Junto con los datos para la entrega ,Te enviaremos la orden al correo  ,No entregamos en Oficinas de interrapidisimo. El precio de Oferta es $74,900 Envio Gratis . Pidelas por Whatsapp u ordena directamente  en nuetra tienda web www.Belleandcherie.com✨🌿`,
 
-      `La entrega es digital 😊
+      `La Pestañas elevan realmente tu mirada sin perder tiempo ni gastar mucho dinero😊
 
-Te compartiremos el acceso completo al curso por WhatsApp para que empieces a estudiar de inmediato. ✨`,
+Tan pronto nos envíen el comprobante de tu pago 😊
+
+Junto con los datos para la entrega ,Te enviaremos la orden al correo  ,No entregamos en Oficinas de interrapidisimo. El precio de Oferta es $74,900 Envio Gratis . Pidelas por Whatsapp u ordena directamente  en nuetra tienda web www.Belleandcherie.com✨ ✨`,
     ];
 
     return agregarCierre(elegirAleatoria(respuestasEnvio));
@@ -200,23 +203,23 @@ Te compartiremos el acceso completo al curso por WhatsApp para que empieces a es
     textoNormalizado.includes("pago")
   ) {
     const respuestasPago = [
-      `En Colombia puedes pagar por Nequi, Daviplata, transferencia o Bre-B. 
-Si estás fuera del país, aceptamos PayPal.
+      `Puedes pagar por Nequi, Daviplata, transferencia o Bre-B. 
 💖 *SOLO HOY* 🔥
-Puedes acceder por *$12.000 COP* o $10 USD Fuera de Col
-~(Antes $99.900 COP)~`,
+OBtenlas por *$74.900 COP* 
+~(Antes $109.900 COP)~  _Ultimas 14 unidades_ `,
 
-      `Para recibir el  Material puedes pagar: 😊
+      `Para Ordenar las pestañas puedes pagar: 😊
 
-Muy sencillo: En Colombia Nequi/Daviplata o Llave, envías el soporte por WhatsApp y activamos tu acceso.:
+Muy sencillo: Nequi/Daviplata o Llave, envías el soporte por WhatsApp y creamos tu orden:
 💖 *SOLO HOY* 🔥
-Puedes acceder por *$12.000 COP* o $10 USD Fuera de Col
-~(Antes $99.900 COP)`,
+Puedes Tenerlas  por *$74.900 COP* 
+~(Antes $109.900 COP) _Ultimas 14 unidades_ `,
 
-      `Aceptamos varios medios de pago COL: Nequi/ Daviplata o Llave Paypal si estas fuera de COL.
-Tendras acceso tan pronto validemos el pago recibirás el acceso.💖 *SOLO HOY* 🔥
-Puedes acceder por *$12.000 COP* o $10 USD Fuera de Col
-~(Antes $99.900 COP)`,
+      `Aceptamos varios medios de pago COL: Nequi/ Daviplata o Contraentrega.
+Crearemos la orden , tan pronto nos confirmes los datos de envio-💖 
+*SOLO HOY* 🔥
+Puedes tenerlas por *$74.900 COP*  _Ultimas 14 unidades_
+~(Antes $109.900 COP)`,
     ];
 
     return agregarCierre(elegirAleatoria(respuestasPago));
