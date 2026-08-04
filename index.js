@@ -158,16 +158,16 @@ function respuestaDirecta(textoNormalizado) {
     textoNormalizado.includes("entrega") ||
     textoNormalizado.includes("fisico") ||
     textoNormalizado.includes("pdf") ||
-    textoNormalizado.includes("digital") ||
+    textoNormalizado.includes("dias") ||
     textoNormalizado.includes("descargar") ||
-    textoNormalizado.includes("recibir") ||
+    textoNormalizado.includes("demora") ||
     textoNormalizado.includes("pense") ||
     textoNormalizado.includes("ubicacion") ||
     textoNormalizado.includes("presencial") ||
     textoNormalizado.includes("pense")
   ) {
     const respuestasEnvio = [
-      `El Set de Pestañas es uno de nustros productos mas vendidos 😊
+      `El Set de Pestañas es uno de nuestros productos mas vendidos 😊
 
 Para procesar la orden, confirmanos los datos de envio que te solicitamos , recuerda que puedes pagar por Nequi/Daviplata , Llave o contra entrega.El precio de Oferta es $74,900 (ENVIO GRATIS)🌿`,
 
@@ -194,7 +194,7 @@ Junto con los datos para la entrega ,Te enviaremos la orden al correo  ,No entre
     textoNormalizado.includes("precio") ||
     textoNormalizado.includes("costo") ||
     textoNormalizado.includes("Formas") ||
-    textoNormalizado.includes("tarjeta") ||
+    textoNormalizado.includes("pedir") ||
     textoNormalizado.includes("precio") ||
     textoNormalizado.includes("cuesta") ||
     textoNormalizado.includes("compro") ||
@@ -206,19 +206,19 @@ Junto con los datos para la entrega ,Te enviaremos la orden al correo  ,No entre
       `Puedes pagar por Nequi, Daviplata, transferencia o Bre-B. 
 💖 *SOLO HOY* 🔥
 OBtenlas por *$74.900 COP* 
-~(Antes $109.900 COP)~  _Ultimas 14 unidades_ `,
+~(Antes $109.900 COP)~  _Ultimas 7 unidades_ `,
 
       `Para Ordenar las pestañas puedes pagar: 😊
 
 Muy sencillo: Nequi/Daviplata o Llave, envías el soporte por WhatsApp y creamos tu orden:
 💖 *SOLO HOY* 🔥
 Puedes Tenerlas  por *$74.900 COP* 
-~(Antes $109.900 COP) _Ultimas 14 unidades_ `,
+~(Antes $109.900 COP) _Ultimas 7 unidades_ `,
 
       `Aceptamos varios medios de pago COL: Nequi/ Daviplata o Contraentrega.
 Crearemos la orden , tan pronto nos confirmes los datos de envio-💖 
 *SOLO HOY* 🔥
-Puedes tenerlas por *$74.900 COP*  _Ultimas 14 unidades_
+Puedes tenerlas por *$74.900 COP*  _Ultimas 7 unidades_
 ~(Antes $109.900 COP)`,
     ];
 
