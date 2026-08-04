@@ -44,10 +44,10 @@ REGLAS:
 
 INFORMACIÓN REAL:
 - El producto es un Set de Pestañas Flora, el cual trae 120 piezas de pestañas de medidas entre 8 mm a 12 mm.
-- El SEt incluye las 120 piezas, No incluye Pinzas.
+- El Set incluye las 120 piezas, No incluye Pinzas.
 - Las pestañas son autoadhesivas.
 - Realizamos envios a cualqueir ciudad de Colombia.
-- Tenemos diferentes metodos de pago como Pago por Nequi / DAviplata o Pago contraentrega.
+- Tenemos diferentes metodos de pago como Pago por Nequi / Daviplata o Pago contraentrega.
 - Las pestañas son Naturales, livianes , hermosas y faciles de poner en menso de 2 minutos.
 -No tenemos tienda fisica, somos tienda virtual y envios a cualqueir ciudad del pais.
 - El precio de oferta de este producto es de $74,900 , el precio anterior es de $109,900.
@@ -56,12 +56,12 @@ INFORMACIÓN REAL:
 -REalizamos envios por medio de "Interrapidisimo" y las pestañas estan lelgando entre 2 a 3 dias para principales ciudades y entre 3 a 5 dias para ciudades o municipios.
 - Para ordenar las pestañas selecciona. la forma de pago y sigue las instrucciones.
 - El precio de venta  de las pestañas es:
-  - 74.000  cop  Solo hoy- Precio de Lanzamiento
+  - 74.000  cop  Solo hoy- Precio de ultimas unidades
   - El precio regular de las pestañas  es de $109.900 COP
 
 
 OBJETIVO:
-Después de resolver la duda de forma amable y humana, dirige suavemente a la persona al pago de las "Pestañas Flota Set 120 Piezas":
+Después de resolver la duda de forma amable y humana, dirige suavemente a la persona al pago de las "Pestañas Flora Set 120 Piezas":
 - transferencia Bre-b (Llave)
 - Pago en Nequi/Daviplata
 - Contraentrega
@@ -140,14 +140,14 @@ function respuestaDirecta(textoNormalizado) {
     textoNormalizado.includes("contiene") ||
     textoNormalizado.includes("viene") ||
     textoNormalizado.includes("clases") ||
-    textoNormalizado.includes("tecnicas")
+    textoNormalizado.includes("trata")
   ) {
     const respuestasTrae = [
       `Incluye  120 Piezas de Pestañas , estas ya traen el adhesivo en la base. No necesitas pegante ... No incluye la pinza, pero puedes aplicarlas con cualqueir pinza .🌿.`,
 
       `Recibirás el Set de Pestañas  y confirmando  tu compra en los proximos 15 miunutos , recibiras gratis unas plantillas de mapping digitales y recursos adicionales para mejorar tu técnica.🥰`,
 
-      `Las pestañas  reúne todo lo necesario para  elevar la mirada 120 piezas Con Rizo Tipo C , de medidas entre 8 a 10 mm.`,
+      `Las pestañas  reúnen todo lo necesario para  elevar la mirada 120 piezas Con Rizo Tipo C , de medidas entre 8 a 10 mm.`,
     ];
 
     return agregarCierre(elegirAleatoria(respuestasTrae));
@@ -171,21 +171,21 @@ function respuestaDirecta(textoNormalizado) {
     const respuestasEnvio = [
       `El Set de Pestañas es uno de nuestros productos mas vendidos 😊
 
-Para procesar la orden, confirmanos los datos de envio que te solicitamos , recuerda que puedes pagar por Nequi/Daviplata , Llave o contra entrega.El precio de Oferta es $74,900 (ENVIO GRATIS)🌿`,
+Para procesar la orden, confirmanos los datos de envio que te solicitamos , recuerda que puedes pagar por Nequi/Daviplata , Llave o contra entrega.El envio demora entre 2 a 3 dias.El precio de Oferta es $74,900 (ENVIO GRATIS)🌿`,
 
-      `El material NO  físico 🙏
+      `No tenemos tienda física, Somos tienda Virtual 🙏
 
-Recibirás las pestañas  (120 Piezas) Entre 8 mms a 12 mms ,a la direccion que nos entregues , No entregamos en Oficinas de interrapidisimo ,o ordena directamente  en nuetra tienda web www.Belleandcherie.com✨`,
+Recibirás las pestañas  (120 Piezas) Entre 8 mms a 12 mms ,a la direccion que nos entregues El envio demora entre 2 a 3 dias, No entregamos en Oficinas de interrapidisimo ,o ordena directamente  en nuetra tienda web www.Belleandcherie.com✨`,
 
       `Tan pronto nos envíen el comprobante de tu pago 😊
 
-Junto con los datos para la entrega ,Te enviaremos la orden al correo  ,No entregamos en Oficinas de interrapidisimo. El precio de Oferta es $74,900 Envio Gratis . Pidelas por Whatsapp u ordena directamente  en nuetra tienda web www.Belleandcherie.com✨🌿`,
+Junto con los datos para la entrega ,Te enviaremos la orden al correo. El envio a direccion demora entre 2 a 3 dias ,NO entregamos en Oficinas de interrapidisimo. El precio de Oferta es $74,900 Envio Gratis . Pidelas por Whatsapp u ordena directamente  en nuetra tienda web www.Belleandcherie.com✨🌿`,
 
       `La Pestañas elevan realmente tu mirada sin perder tiempo ni gastar mucho dinero😊
 
 Tan pronto nos envíen el comprobante de tu pago 😊
 
-Junto con los datos para la entrega ,Te enviaremos la orden al correo  ,No entregamos en Oficinas de interrapidisimo. El precio de Oferta es $74,900 Envio Gratis . Pidelas por Whatsapp u ordena directamente  en nuetra tienda web www.Belleandcherie.com✨ ✨`,
+Junto con los datos para la entrega ,Te enviaremos la orden al correo  .El envio demora entre 2 a 3 dias,No entregamos en Oficinas de interrapidisimo. El precio de Oferta es $74,900 Envio Gratis . Pidelas por Whatsapp u ordena directamente  en nuetra tienda web www.Belleandcherie.com✨ ✨`,
     ];
 
     return agregarCierre(elegirAleatoria(respuestasEnvio));
