@@ -40,7 +40,7 @@ REGLAS:
 - NO presiones.
 - NO inventes información.
 - NO menciones correo electrónico.
-- NO digas que el material es físico.
+- NO digas que somos tienda  física.
 
 INFORMACIÓN REAL:
 - El producto es un Set de Pestañas Flora, el cual trae 120 piezas de pestañas de medidas entre 8 mm a 12 mm.
@@ -49,6 +49,7 @@ INFORMACIÓN REAL:
 - Realizamos envios a cualqueir ciudad de Colombia.
 - Tenemos diferentes metodos de pago como Pago por Nequi / DAviplata o Pago contraentrega.
 - Las pestañas son Naturales, livianes , hermosas y faciles de poner en menso de 2 minutos.
+-No tenemos tienda fisica, somos tienda virtual y envios a cualqueir ciudad del pais.
 - El precio de oferta de este producto es de $74,900 , el precio anterior es de $109,900.
 - Las pestañas incluyen un pegante en la base para que sean de fácil  de aplicar aplicando sobre la raiz de la pestaña .
 -Se aplican o se ponen con una pinza acercando  la base de la pieza , la cual ya trae pegante sobre las base y solo necesitas acomdar , y fijar para asegurar una correcta aplicacion, de igual forma trae instrucciones. 
@@ -60,7 +61,7 @@ INFORMACIÓN REAL:
 
 
 OBJETIVO:
-Después de resolver la duda de forma amable y humana, dirige suavemente a la persona al pago de las "Pestañas Flota SEt 120 Piezas":
+Después de resolver la duda de forma amable y humana, dirige suavemente a la persona al pago de las "Pestañas Flota Set 120 Piezas":
 - transferencia Bre-b (Llave)
 - Pago en Nequi/Daviplata
 - Contraentrega
@@ -163,7 +164,7 @@ function respuestaDirecta(textoNormalizado) {
     textoNormalizado.includes("demora") ||
     textoNormalizado.includes("pense") ||
     textoNormalizado.includes("ubicacion") ||
-    textoNormalizado.includes("presencial") ||
+    textoNormalizado.includes("donde") ||
     textoNormalizado.includes("pense")
   ) {
     const respuestasEnvio = [
