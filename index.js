@@ -13,60 +13,137 @@ const openai = new OpenAI({
 const PORT = process.env.PORT || 8080;
 
 const SYSTEM_PROMPT = `
-Eres Jessi ❤️, una asistente humana, cálida, experta en belleza, amigable y cercana que responde dudas por WhatsApp sobre las "pestañas Flora .
+Eres Jessi ❤️, asesora oficial de Belle & Cherie.
 
-Tu trabajo es responder dudas de forma NATURAL, BREVE y HUMANA, como si fueras una persona real atendiendo con cariño.
+Atiendes clientes por WhatsApp interesados únicamente en:
 
-IMPORTANTE:
-- Nunca suenes robótica.
-- Nunca respondas exactamente igual cada vez.
-- Varía ligeramente las palabras y estructura.
-- Mantén respuestas cálidas y naturales.
-- No escribas demasiado.
-- Responde máximo en 1 o 2 párrafos cortos.
+Pestañas Flora Autoadhesivas (120 piezas).
 
-REGLAS:
-- NO saludes.
-- NO uses "Hola".
-- NO hagas múltiples preguntas.
-- NO hagas preguntas abiertas innecesarias.
-- NO digas:
-  - "¿Quieres saber más?"
-  - "¿Te interesa?"
-  - "¿Te gustaría?"
-  - "¿Te ayudo en algo más?"
-  - "¿Quieres que te cuente?"
-- NO seas agresiva vendiendo.
-- NO presiones.
-- NO inventes información.
-- NO menciones correo electrónico.
-- NO digas que somos tienda  física.
+Tu personalidad es:
 
-INFORMACIÓN REAL:
-- El producto es un Set de Pestañas Flora, el cual trae 120 piezas de pestañas de medidas entre 8 mm a 12 mm.
-- El Set incluye las 120 piezas, No incluye Pinzas.
-- Las pestañas son autoadhesivas.
-- Realizamos envios a cualqueir ciudad de Colombia.
-- Tenemos diferentes metodos de pago como Pago por Nequi / Daviplata o Pago contraentrega.
-- Las pestañas son Naturales, livianes , hermosas y faciles de poner en menso de 2 minutos.
--No tenemos tienda fisica, somos tienda virtual y envios a cualqueir ciudad del pais.
-- El precio de oferta de este producto es de $74,900 , el precio anterior es de $109,900.
-- Las pestañas incluyen un pegante en la base para que sean de fácil  de aplicar aplicando sobre la raiz de la pestaña .
--Se aplican o se ponen con una pinza acercando  la base de la pieza , la cual ya trae pegante sobre las base y solo necesitas acomdar , y fijar para asegurar una correcta aplicacion, de igual forma trae instrucciones. 
--REalizamos envios por medio de "Interrapidisimo" y las pestañas estan lelgando entre 2 a 3 dias para principales ciudades y entre 3 a 5 dias para ciudades o municipios.
-- Para ordenar las pestañas selecciona. la forma de pago y sigue las instrucciones.
-- El precio de venta  de las pestañas es:
-  - 74.000  cop  Solo hoy- Precio de ultimas unidades
-  - El precio regular de las pestañas  es de $109.900 COP
+- Humana.
+- Cercana.
+- Amable.
+- Experta en belleza.
+- Nunca robótica.
+- Nunca agresiva vendiendo.
 
+Tu misión es resolver dudas de forma breve, clara y natural.
 
-OBJETIVO:
-Después de resolver la duda de forma amable y humana, dirige suavemente a la persona al pago de las "Pestañas Flora Set 120 Piezas":
-- transferencia Bre-b (Llave)
-- Pago en Nequi/Daviplata
-- Contraentrega
+REGLAS IMPORTANTES
 
-Haz que el cierre se sienta natural, amable y espiritual, nunca como presión de venta.
+- Responde máximo en 2 líneas.
+- Usa un solo emoji cuando sea natural.
+- Nunca inventes información.
+- Nunca cambies precios.
+- Nunca inventes promociones.
+- Nunca inventes medidas.
+- Nunca inventes colores.
+- Nunca inventes métodos de pago.
+- Nunca prometas algo que no aparezca en la información oficial.
+
+NO DIGAS:
+
+- ¿Te interesa?
+- ¿Quieres saber más?
+- ¿Te gustaría?
+- ¿Puedo ayudarte en algo más?
+- ¿Quieres que te cuente?
+
+No saludes.
+
+No uses "Hola".
+
+No escribas respuestas largas.
+
+INFORMACIÓN OFICIAL
+
+Empresa:
+Belle & Cherie
+
+Producto:
+
+Pestañas Flora Autoadhesivas
+
+Información oficial:
+
+• Precio actual:
+$74.900 COP
+
+• Precio anterior:
+$119.900 COP
+
+• Incluye:
+120 piezas
+
+• Medidas:
+8 mm
+9 mm
+10 mm
+11 mm
+12 mm
+
+24 piezas por cada medida.
+
+• Color:
+Negro natural.
+
+• Adhesivo:
+Incluyen adhesivo transparente resistente al agua.
+
+Puede durar hasta 7 días según el cuidado.
+
+Después pueden reutilizarse usando pegante transparente o negro.
+
+• Aplicación:
+
+Se colocan debajo de las pestañas naturales.
+
+No requieren experiencia.
+
+Demoran menos de 2 minutos.
+
+• Retiro:
+
+Puede hacerse con:
+
+- removedor
+- vaselina
+- desmaquillante
+
+Siempre con suavidad.
+
+• Tienda:
+
+Belle & Cherie es una tienda virtual ubicada en Bogotá.
+
+No tiene punto físico.
+
+Hace envíos GRATIS a toda Colombia.
+
+• Medios de pago:
+
+Nequi
+
+Daviplata
+
+Bre-B
+
+Contra entrega
+
+Cuando no conozcas una respuesta:
+
+Indica amablemente que ese dato debe ser confirmado con el equipo.
+
+Nunca inventes información.
+
+OBJETIVO
+
+Resolver dudas.
+
+Generar confianza.
+
+Cuando sea apropiado, invitar naturalmente al usuario a realizar su compra utilizando los medios de pago oficiales.
 `;
 
 function normalizarTexto(texto) {
@@ -78,202 +155,685 @@ function normalizarTexto(texto) {
 }
 
 function elegirAleatoria(opciones) {
-  return opciones[Math.floor(Math.random() * opciones.length)];
+  return opciones[
+    Math.floor(Math.random() * opciones.length)
+  ];
 }
 
 function limpiarRespuesta(texto) {
+
   texto = String(texto || "").trim();
 
   texto = texto
-    .replace(/^¡?\s*hola\s*[😊❤️✨,\.\!]*\s*/gi, "")
-    .replace(/^gracias por preguntar\s*[😊❤️✨,\.\!]*\s*/gi, "")
-    .replace(/^buenos días\s*[😊❤️✨,\.\!]*\s*/gi, "")
-    .replace(/^buenos dias\s*[😊❤️✨,\.\!]*\s*/gi, "")
-    .replace(/^buenas tardes\s*[😊❤️✨,\.\!]*\s*/gi, "")
-    .replace(/^buenas noches\s*[😊❤️✨,\.\!]*\s*/gi, "");
 
-  texto = texto
-    .replace(/¿[^?]*(quieres|te interesa|te gustaría|te gustaria|te cuento|te explico|te ayudo|puedo ayudarte|hay algo más|hay algo mas|te parece|te comparto|te paso)[^?]*\?/gi, "")
-    .replace(/\s{2,}/g, " ")
-    .replace(/\n{3,}/g, "\n\n")
+    .replace(/^hola[\s,!.\u2764\ufe0f😊✨💕]*/gi,"")
+    .replace(/^buenos dias[\s,!.\u2764\ufe0f😊✨💕]*/gi,"")
+    .replace(/^buenas tardes[\s,!.\u2764\ufe0f😊✨💕]*/gi,"")
+    .replace(/^buenas noches[\s,!.\u2764\ufe0f😊✨💕]*/gi,"")
+
+    .replace(/\s{2,}/g," ")
+
+    .replace(/\n{3,}/g,"\n\n")
+
     .trim();
 
   return texto;
+
 }
 
-function cierrePago() {
-  const cierres = [
-    `💌 Puedes adquirir las pestañas po transferencia bancaria(Bre-b) o Pago por Nequi/Daviplata✨
+function cierreCompra(){
 
-¿Cuál método prefieres? 🩷`,
+const cierres=[
 
-    `💌 Si deseas comprar nuestras Pestañas Flora , puedes hacerlo por transferencia bancaria(Bre-b) o Pago por Nequi/Daviplata ✨
+`💖 Puedes comprar por Nequi, Daviplata, Bre-B o Contra Entrega. ¿Qué método prefieres?`,
 
-¿Qué método prefieres? 🩷`,
+`✨ Si deseas realizar tu pedido puedes pagar por Nequi, Daviplata, Bre-B o Contra Entrega.`,
 
-    `💌 Para obtenerlas Pestañas Flora  puedes elegir transferencia bancaria(Bre-b) o Pago por Nequi/Daviplata ✨
+`🌸 Cuando decidas comprar, puedes hacerlo por Nequi, Daviplata, Bre-B o Contra Entrega.`
 
+];
 
+return elegirAleatoria(cierres);
 
-¿Cuál opción prefieres? 🩷`,
-  ];
-
-  return elegirAleatoria(cierres);
 }
 
-function agregarCierre(texto) {
-  const limpio = limpiarRespuesta(texto);
+function debeAgregarCierre(texto){
 
-  if (!limpio) {
-    return cierrePago();
-  }
+texto=normalizarTexto(texto);
 
-  return `${limpio}
+return(
 
-${cierrePago()}`;
+texto.includes("precio") ||
+
+texto.includes("cuesta") ||
+
+texto.includes("valor") ||
+
+texto.includes("comprar") ||
+
+texto.includes("pedido") ||
+
+texto.includes("pagar") ||
+
+texto.includes("contra entrega") ||
+
+texto.includes("nequi") ||
+
+texto.includes("daviplata") ||
+
+texto.includes("bre") ||
+
+texto.includes("envio")
+
+);
+
 }
 
+function agregarCierre(respuesta,texto){
+
+const limpio=limpiarRespuesta(respuesta);
+
+if(!limpio){
+
+return cierreCompra();
+
+}
+
+if(!debeAgregarCierre(texto)){
+
+return limpio;
+
+}
+
+return `${limpio}
+
+${cierreCompra()}`;
+
+}
 function respuestaDirecta(textoNormalizado) {
-  if (
-    textoNormalizado.includes("incluye") ||
-    textoNormalizado.includes("trae") ||
-    textoNormalizado.includes("contiene") ||
-    textoNormalizado.includes("viene") ||
-    textoNormalizado.includes("clases") ||
-    textoNormalizado.includes("trata")
-  ) {
-    const respuestasTrae = [
-      `Incluye  120 Piezas de Pestañas , estas ya traen el adhesivo en la base. No necesitas pegante ... No incluye la pinza, pero puedes aplicarlas con cualqueir pinza .🌿.`,
 
-      `Recibirás el Set de Pestañas  y confirmando  tu compra en los proximos 15 miunutos , recibiras gratis unas plantillas de mapping digitales y recursos adicionales para mejorar tu técnica.🥰`,
+// =========================
+// PRECIO
+// =========================
 
-      `Las pestañas  reúnen todo lo necesario para  elevar la mirada 120 piezas Con Rizo Tipo C , de medidas entre 8 a 10 mm.`,
-    ];
+if(
 
-    return agregarCierre(elegirAleatoria(respuestasTrae));
-  }
+textoNormalizado.includes("precio") ||
+textoNormalizado.includes("cuesta") ||
+textoNormalizado.includes("valor") ||
+textoNormalizado.includes("costo") ||
+textoNormalizado.includes("oferta") ||
+textoNormalizado.includes("74900")
 
-  if (
-    textoNormalizado.includes("envio") ||
-    textoNormalizado.includes("enviar") ||
-    textoNormalizado.includes("entrega") ||
-    textoNormalizado.includes("fisico") ||
-    textoNormalizado.includes("pdf") ||
-    textoNormalizado.includes("dias") ||
-    textoNormalizado.includes("instalan") ||
-    textoNormalizado.includes("demora") ||
-    textoNormalizado.includes("pense") ||
-    textoNormalizado.includes("ubicacion") ||
-        textoNormalizado.includes("direccion") ||
-    textoNormalizado.includes("donde") ||
-    textoNormalizado.includes("pense")
-  ) {
-    const respuestasEnvio = [
-      `El Set de Pestañas es uno de nuestros productos mas vendidos 😊
+){
 
-Para procesar la orden, confirmanos los datos de envio que te solicitamos , recuerda que puedes pagar por Nequi/Daviplata , Llave o contra entrega.El envio demora entre 2 a 3 dias.El precio de Oferta es $74,900 (ENVIO GRATIS)🌿`,
+const respuestas=[
 
-      `No tenemos tienda física, Somos tienda Virtual 🙏
+"💖 Hoy tienen un precio especial de $74.900 (antes $119.900). Incluyen 120 piezas autoadhesivas con envío GRATIS.",
 
-Recibirás las pestañas  (120 Piezas) Entre 8 mms a 12 mms ,a la direccion que nos entregues El envio demora entre 2 a 3 dias, No entregamos en Oficinas de interrapidisimo ,o ordena directamente  en nuetra tienda web www.Belleandcherie.com✨`,
+"✨ Aprovecha el precio especial de $74.900. Antes costaban $119.900 y el envío es GRATIS a toda Colombia.",
 
-      `Tan pronto nos envíen el comprobante de tu pago 😊
+"🌸 Hoy puedes llevar tus Pestañas Flora por solo $74.900. Incluyen 120 piezas y envío GRATIS."
 
-Junto con los datos para la entrega ,Te enviaremos la orden al correo. El envio a direccion demora entre 2 a 3 dias ,NO entregamos en Oficinas de interrapidisimo. El precio de Oferta es $74,900 Envio Gratis . Pidelas por Whatsapp u ordena directamente  en nuetra tienda web www.Belleandcherie.com✨🌿`,
+];
 
-      `La Pestañas elevan realmente tu mirada sin perder tiempo ni gastar mucho dinero😊
+return agregarCierre(
+elegirAleatoria(respuestas),
+textoNormalizado
+);
 
-Tan pronto nos envíen el comprobante de tu pago 😊
-
-Junto con los datos para la entrega ,Te enviaremos la orden al correo  .El envio demora entre 2 a 3 dias,No entregamos en Oficinas de interrapidisimo. El precio de Oferta es $74,900 Envio Gratis . Pidelas por Whatsapp u ordena directamente  en nuetra tienda web www.Belleandcherie.com✨ ✨`,
-    ];
-
-    return agregarCierre(elegirAleatoria(respuestasEnvio));
-  }
-
-  if (
-    textoNormalizado.includes("Pagar") ||
-    textoNormalizado.includes("precio") ||
-    textoNormalizado.includes("costo") ||
-    textoNormalizado.includes("Formas") ||
-    textoNormalizado.includes("pedir") ||
-    textoNormalizado.includes("precio") ||
-    textoNormalizado.includes("cuesta") ||
-    textoNormalizado.includes("compro") ||
-    textoNormalizado.includes("transferir") ||
-    textoNormalizado.includes("pagar") ||
-    textoNormalizado.includes("pago")
-  ) {
-    const respuestasPago = [
-      `Puedes pagar por Nequi, Daviplata, transferencia o Bre-B. 
-💖 *SOLO HOY* 🔥
-OBtenlas por *$74.900 COP* 
-~(Antes $109.900 COP)~  _Ultimas 7 unidades_ `,
-
-      `Para Ordenar las pestañas puedes pagar: 😊
-
-Muy sencillo: Nequi/Daviplata o Llave, envías el soporte por WhatsApp y creamos tu orden:
-💖 *SOLO HOY* 🔥
-Puedes Tenerlas  por *$74.900 COP* 
-~(Antes $109.900 COP) _Ultimas 7 unidades_ `,
-
-      `Aceptamos varios medios de pago COL: Nequi/ Daviplata o Contraentrega.
-Crearemos la orden , tan pronto nos confirmes los datos de envio-💖 
-*SOLO HOY* 🔥
-Puedes tenerlas por *$74.900 COP*  _Ultimas 7 unidades_
-~(Antes $109.900 COP)`,
-    ];
-
-    return agregarCierre(elegirAleatoria(respuestasPago));
-  }
-
-  return null;
 }
 
-app.get("/", (req, res) => {
-  res.send("Bot ventas activo ✅");
+// =========================
+// APLICACIÓN
+// =========================
+
+if(
+
+textoNormalizado.includes("aplicar") ||
+textoNormalizado.includes("poner") ||
+textoNormalizado.includes("colocar") ||
+textoNormalizado.includes("instalar") ||
+textoNormalizado.includes("como se usan")
+
+){
+
+const respuestas=[
+
+"✨ ¡Es muy fácil! Colócalas debajo de tus pestañas naturales con una pinza. Estarán listas en menos de 2 minutos.",
+
+"💖 No necesitas experiencia. Solo colócalas con una pinza y en menos de 2 minutos estarán listas.",
+
+"✨ Cualquier persona puede ponerlas. Se aplican debajo de tus pestañas naturales en menos de 2 minutos."
+
+];
+
+return agregarCierre(
+elegirAleatoria(respuestas),
+textoNormalizado
+);
+
+}
+
+// =========================
+// PEGANTE
+// =========================
+
+if(
+
+textoNormalizado.includes("pegante") ||
+textoNormalizado.includes("adhesivo") ||
+textoNormalizado.includes("pegan") ||
+textoNormalizado.includes("goma")
+
+){
+
+const respuestas=[
+
+"✨ Incluyen un adhesivo transparente resistente al agua que puede durar hasta 7 días. Después puedes reutilizarlas con pegante.",
+
+"💖 Ya traen adhesivo transparente resistente al agua. Luego puedes reutilizarlas usando pegante transparente o negro.",
+
+"✨ El adhesivo ya viene incorporado y puede durar hasta 7 días según el cuidado."
+
+];
+
+return agregarCierre(
+elegirAleatoria(respuestas),
+textoNormalizado
+);
+
+}
+
+// =========================
+// RETIRAR
+// =========================
+
+if(
+
+textoNormalizado.includes("retirar") ||
+textoNormalizado.includes("quitar") ||
+textoNormalizado.includes("remover") ||
+textoNormalizado.includes("despegar")
+
+){
+
+const respuestas=[
+
+"💖 Retíralas con removedor, vaselina o desmaquillante. Hazlo suavemente para cuidar tus pestañas.",
+
+"✨ Puedes retirarlas fácilmente usando vaselina o desmaquillante y cuidando tus pestañas naturales.",
+
+"🌸 Se retiran con removedor o desmaquillante. Hazlo con suavidad."
+
+];
+
+return agregarCierre(
+elegirAleatoria(respuestas),
+textoNormalizado
+);
+
+}
+
+// =========================
+// DAÑAN
+// =========================
+
+if(
+
+textoNormalizado.includes("dañan") ||
+textoNormalizado.includes("danan") ||
+textoNormalizado.includes("caen") ||
+textoNormalizado.includes("tumbar") ||
+textoNormalizado.includes("arrancar")
+
+){
+
+const respuestas=[
+
+"💖 Si las retiras correctamente con removedor o desmaquillante, tus pestañas naturales estarán protegidas.",
+
+"✨ No dañan tus pestañas si las retiras con suavidad siguiendo las recomendaciones.",
+
+"🌸 Con un retiro adecuado tus pestañas naturales permanecen protegidas."
+
+];
+
+return agregarCierre(
+elegirAleatoria(respuestas),
+textoNormalizado
+);
+
+}
+
+// =========================
+// MEDIDAS
+// =========================
+
+if(
+
+textoNormalizado.includes("medidas") ||
+textoNormalizado.includes("tamaño") ||
+textoNormalizado.includes("mm") ||
+textoNormalizado.includes("120 piezas")
+
+){
+
+const respuestas=[
+
+"✨ Incluyen 120 piezas en medidas de 8 a 12 mm. Cada medida trae 24 piezas.",
+
+"💖 Recibirás 120 piezas distribuidas entre 8 y 12 mm.",
+
+"🌸 Incluyen cinco medidas diferentes para adaptarse a distintos estilos."
+
+];
+
+return agregarCierre(
+elegirAleatoria(respuestas),
+textoNormalizado
+);
+
+}
+
+// =========================
+// OTRAS MEDIDAS
+// =========================
+
+if(
+
+textoNormalizado.includes("otras medidas") ||
+textoNormalizado.includes("14 mm") ||
+textoNormalizado.includes("15 mm") ||
+textoNormalizado.includes("otro tamaño")
+
+){
+
+const respuestas=[
+
+"💖 Actualmente manejamos una sola presentación de 120 piezas en medidas de 8 a 12 mm.",
+
+"✨ Por ahora solo está disponible la presentación de 8 a 12 mm.",
+
+"🌸 Las medidas no pueden modificarse porque el empaque viene sellado."
+
+];
+
+return agregarCierre(
+elegirAleatoria(respuestas),
+textoNormalizado
+);
+
+}
+
+// =========================
+// COLOR
+// =========================
+
+if(
+
+textoNormalizado.includes("cafe") ||
+textoNormalizado.includes("color") ||
+textoNormalizado.includes("negro")
+
+){
+
+const respuestas=[
+
+"💖 Vienen en color negro natural para lograr un acabado muy natural.",
+
+"✨ El color negro natural se integra perfectamente con tus pestañas.",
+
+"🌸 Actualmente solo manejamos color negro natural."
+
+];
+
+return agregarCierre(
+elegirAleatoria(respuestas),
+textoNormalizado
+);
+
+}
+
+// =========================
+// UBICACIÓN
+// =========================
+
+if(
+
+textoNormalizado.includes("ubicacion") ||
+textoNormalizado.includes("direccion") ||
+textoNormalizado.includes("tienda") ||
+textoNormalizado.includes("local")
+
+){
+
+const respuestas=[
+
+"💖 Estamos en Bogotá. Somos tienda 100% virtual y hacemos envíos GRATIS a toda Colombia.",
+
+"✨ No tenemos punto físico. Somos una tienda virtual con envíos nacionales.",
+
+"🌸 Operamos desde Bogotá y enviamos gratis a cualquier ciudad del país."
+
+];
+
+return agregarCierre(
+elegirAleatoria(respuestas),
+textoNormalizado
+);
+
+}
+
+// =========================
+// MÉTODOS DE PAGO
+// =========================
+
+if(
+
+textoNormalizado.includes("nequi") ||
+textoNormalizado.includes("daviplata") ||
+textoNormalizado.includes("bre") ||
+textoNormalizado.includes("llave") ||
+textoNormalizado.includes("contra entrega") ||
+textoNormalizado.includes("contraentrega") ||
+textoNormalizado.includes("pagar")
+
+){
+
+const respuestas=[
+
+"💖 Puedes pagar por Nequi, Daviplata, Bre-B o Contra Entrega. El envío es GRATIS.",
+
+"✨ Aceptamos Nequi, Daviplata, Bre-B y pago Contra Entrega.",
+
+"🌸 Elige el método que prefieras: Nequi, Daviplata, Bre-B o Contra Entrega."
+
+];
+
+return agregarCierre(
+elegirAleatoria(respuestas),
+textoNormalizado
+);
+
+}
+
+// =========================
+// DURACIÓN
+// =========================
+
+if(
+
+textoNormalizado.includes("duran") ||
+textoNormalizado.includes("duracion") ||
+textoNormalizado.includes("cuanto duran") ||
+textoNormalizado.includes("dias")
+
+){
+
+const respuestas=[
+
+"💖 En su primer uso pueden durar hasta 7 días dependiendo del cuidado.",
+
+"✨ Su duración puede ser de hasta 7 días siguiendo las recomendaciones.",
+
+"🌸 Con un buen cuidado pueden durar hasta 7 días."
+
+];
+
+return agregarCierre(
+elegirAleatoria(respuestas),
+textoNormalizado
+);
+
+}
+
+// =========================
+// PRINCIPIANTES
+// =========================
+
+if(
+
+textoNormalizado.includes("principiante") ||
+textoNormalizado.includes("experiencia") ||
+textoNormalizado.includes("primera vez") ||
+textoNormalizado.includes("nunca he usado") ||
+textoNormalizado.includes("facil")
+
+){
+
+const respuestas=[
+
+"💖 Sí. Son muy fáciles de colocar y estarán listas en menos de 2 minutos.",
+
+"✨ No necesitas experiencia. Cualquier persona puede aprender a usarlas.",
+
+"🌸 Son ideales si es tu primera vez usando pestañas."
+
+];
+
+return agregarCierre(
+elegirAleatoria(respuestas),
+textoNormalizado
+);
+
+}
+
+// =========================
+// INTENCIÓN DE COMPRA
+// =========================
+
+if(
+
+textoNormalizado.includes("las quiero") ||
+textoNormalizado.includes("quiero") ||
+textoNormalizado.includes("me interesa") ||
+textoNormalizado.includes("como compro") ||
+textoNormalizado.includes("como comprar") ||
+textoNormalizado.includes("hacer pedido") ||
+textoNormalizado.includes("comprarlas")
+
+){
+
+const respuestas=[
+
+"💖 ¡Qué alegría! Puedes realizar tu pedido por Nequi, Daviplata, Bre-B o Contra Entrega. El envío es GRATIS.",
+
+"✨ Ya casi son tuyas. Elige el método de pago que prefieras y te compartiré la información.",
+
+"🌸 Será un gusto enviártelas. Puedes pagar por Nequi, Daviplata, Bre-B o Contra Entrega."
+
+];
+
+return agregarCierre(
+elegirAleatoria(respuestas),
+textoNormalizado
+);
+
+}
+
+return null;
+
+}
+
+// =========================
+// HOME
+// =========================
+
+app.get("/", (req,res)=>{
+
+res.send("Bot Belle & Cherie Flora activo ✅");
+
 });
 
-app.post("/mensaje", async (req, res) => {
-  try {
-    const texto = req.body.texto || req.body.mensaje || req.body.message || "";
+// =========================
+// MENSAJES
+// =========================
 
-    console.log("Texto recibido:", texto);
+app.post("/mensaje", async(req,res)=>{
 
-    if (!texto) {
-      return res.json({ respuesta: cierrePago() });
-    }
+try{
 
-    const textoNormalizado = normalizarTexto(texto);
-    const directa = respuestaDirecta(textoNormalizado);
+const texto=
 
-    if (directa) {
-      console.log("Respuesta directa:", directa);
-      return res.json({ respuesta: directa });
-    }
+req.body.texto ||
 
-    const response = await openai.responses.create({
-      model: "gpt-4.1-mini",
-      temperature: 0.4,
-      input: [
-        { role: "system", content: SYSTEM_PROMPT },
-        { role: "user", content: texto },
-      ],
-    });
+req.body.mensaje ||
 
-    const respuestaIA = response.output_text || "";
-    const respuestaFinal = agregarCierre(respuestaIA);
+req.body.message ||
 
-    console.log("Respuesta enviada:", respuestaFinal);
+"";
 
-    return res.json({ respuesta: respuestaFinal });
-  } catch (error) {
-    console.error("Error en /mensaje:", error);
+console.log("Mensaje:",texto);
 
-    return res.json({ respuesta: cierrePago() });
-  }
+if(!texto){
+
+return res.json({
+
+respuesta:cierreCompra()
+
 });
 
-app.listen(PORT, () => {
-  console.log(`Servidor corriendo en puerto ${PORT}`);
+}
+
+const textoNormalizado=
+
+normalizarTexto(texto);
+
+const directa=
+
+respuestaDirecta(textoNormalizado);
+
+if(directa){
+
+console.log("Respuesta directa");
+
+return res.json({
+
+respuesta:directa
+
+});
+
+}
+
+const response=
+
+await openai.responses.create({
+
+model:"gpt-4.1-mini",
+
+temperature:0.4,
+
+input:[
+
+{
+
+role:"system",
+
+content:SYSTEM_PROMPT
+
+},
+
+{
+
+role:"user",
+
+content:texto
+
+}
+
+]
+
+});
+
+const respuestaIA=
+
+response.output_text || "";
+
+const respuestaFinal=
+
+agregarCierre(
+
+respuestaIA,
+
+textoNormalizado
+
+);
+
+console.log("IA:",respuestaFinal);
+
+return res.json({
+
+respuesta:respuestaFinal
+
+});
+
+}catch(error){
+
+console.error(error);
+
+return res.json({
+
+respuesta:cierreCompra()
+
+});
+
+}
+
+});
+
+// =========================
+// LIMPIEZA FINAL
+// =========================
+
+function limitarRespuesta(texto){
+
+if(!texto) return "";
+
+texto=String(texto).trim();
+
+if(texto.length<=220){
+
+return texto;
+
+}
+
+return texto.substring(0,220).trim()+"...";
+
+}
+
+// =========================
+// MANEJO GLOBAL DE ERRORES
+// =========================
+
+process.on("uncaughtException",(err)=>{
+
+console.error("Uncaught Exception:",err);
+
+});
+
+process.on("unhandledRejection",(err)=>{
+
+console.error("Unhandled Rejection:",err);
+
+});
+
+// =========================
+// LISTEN
+// =========================
+
+app.listen(PORT,()=>{
+
+console.log("====================================");
+
+console.log("🚀 Belle & Cherie IA iniciada");
+
+console.log("Producto: Pestañas Flora");
+
+console.log(`Puerto: ${PORT}`);
+
+console.log("OpenAI conectado ✅");
+
+console.log("====================================");
+
 });
