@@ -623,10 +623,10 @@ function respuestaDirecta(textoNormalizado) {
   if (
     textoNormalizado.includes("duran") ||
     textoNormalizado.includes("duracion") ||
-    textoNormalizado.includes("demora") ||
+    textoNormalizado.includes("usar") ||
     textoNormalizado.includes("cuanto tiempo") ||
-    textoNormalizado.includes("dias") ||
-    textoNormalizado.includes("demoran")
+    textoNormalizado.includes("re utilizar") ||
+    textoNormalizado.includes("puesta")
   ) {
 
     const respuestas = [
@@ -718,15 +718,15 @@ function respuestaDirecta(textoNormalizado) {
   // =========================
 
   if (
-    textoNormalizado.includes("llegar") ||
-    textoNormalizado.includes("demora") ||
+    textoNormalizado.includes("llegando") ||
+    textoNormalizado.includes("demoran") ||
     textoNormalizado.includes("entrega") ||
     textoNormalizado.includes("envio") ||
     textoNormalizado.includes("envios") ||
     textoNormalizado.includes("cuando llega") ||
     textoNormalizado.includes("cuanto tarda") ||
     textoNormalizado.includes("cuanto demora") ||
-    textoNormalizado.includes("interrapidisimo")
+    textoNormalizado.includes("dias")
   ) {
 
     const respuestas = [
