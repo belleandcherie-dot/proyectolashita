@@ -623,10 +623,10 @@ function respuestaDirecta(textoNormalizado) {
   if (
     textoNormalizado.includes("duran") ||
     textoNormalizado.includes("duracion") ||
-    textoNormalizado.includes("cuanto duran") ||
+    textoNormalizado.includes("demora") ||
     textoNormalizado.includes("cuanto tiempo") ||
     textoNormalizado.includes("dias") ||
-    textoNormalizado.includes("semana")
+    textoNormalizado.includes("demoran")
   ) {
 
     const respuestas = [
