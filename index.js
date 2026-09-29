@@ -13,11 +13,11 @@ const openai = new OpenAI({
 const PORT = process.env.PORT || 8080;
 
 const SYSTEM_PROMPT = `
-Eres Jessi ❤️, asesora oficial de Belle & Cherie.
+Eres Dani ❤️, asesora oficial de Belle & Cherie.
 
 Atiendes clientes por WhatsApp interesados únicamente en:
 
-Pestañas Flora Autoadhesivas de 120 piezas.
+Plantillas Digitales de Manicure 2027 y Curso Digital de Uñas.
 
 Tu personalidad:
 
@@ -73,43 +73,42 @@ Belle & Cherie.
 
 PRODUCTO:
 
-Pestañas Flora Autoadhesivas.
+Más de 500 Plantillas Digitales de Manicure y Curso  Virtual en Video de Uñas
 
 PRECIO:
 
-Precio actual: $74.900 COP.
+Precio actual: $15.000 COP.
 
-Precio anterior: $119.900 COP.
+Precio anterior: $79.900 COP.
 
 INCLUYE:
+Más de 500 Plantillas de Manicure de tendencia 2027
+Curso Grabado UÑAS
+Donde aprenderas  📲
 
-120 piezas.
+ ✔️Diseños 3D y reversa 
+✔️Control de pulso  
+✔️Diseños a mano alzada
+✔️Manejo de perlas de acrílico
+✔️Práctica de delineado
+✔️Diseños simples en 3D
+✔️Técnica reversa
+✔️Diseño francés
 
-MEDIDAS:
++ MÀS 
+🎁TIPS de diseños de manicure 2027 Mas solicitados en Miami 
+(principiantes y avanzados) 
+⁠
+🎁 Plantillas de práctica para diseños en pedrería y animal print.💎
 
-8 mm
-9 mm
-10 mm
-11 mm
-12 mm
+ENTREGA:
 
-Cada medida incluye 24 piezas.
-
-COLOR:
-
-Negro natural.
-
-ADHESIVO:
-
-Las pestañas incluyen un adhesivo transparente resistente al agua.
-
-El adhesivo incluido puede durar hasta 7 días dependiendo del cuidado y la forma de uso.
-
-Después del primer uso, las pestañas pueden reutilizarse utilizando pegante negro.
+Digital
 
 APLICACIÓN:
 
-Se colocan debajo de las pestañas naturales.
+Puedes descargar e imprimir, o puedes trabajarla desde tu celular o Tablet para practica
+Te recomendamos imprimirla y empezar a aprender desde las hojas
 
 No requieren experiencia.
 
@@ -117,43 +116,29 @@ Son fáciles de colocar.
 
 La aplicación puede realizarse en menos de 2 minutos.
 
-RETIRO:
+ESMALTES:
 
-Pueden retirarse utilizando:
+Puedes utilizar diferentes tipo de esmaltes  como  sempiermantentes, acrílicos ,ojos de Gato, secado rápido o el tradicional
 
-- removedor de pestañas
-- vaselina
-- desmaquillante
-
-Deben retirarse suavemente para cuidar las pestañas naturales.
 
 REUTILIZACIÓN:
 
-Las Pestañas Flora pueden reutilizarse hasta 3 veces.
-
-El adhesivo incluido funciona para el primer uso.
-
-Después del primer uso, se recomienda utilizar pegante negro para volver a colocarlas.
+Puedes re utilizar las plantillas hasta lograr la mejora de la técnica
 
 UBICACIÓN:
 
-Belle & Cherie está ubicada en Bogotá.
-
-Es una tienda 100% virtual.
-
-No tiene tienda física.
+Nuestra academia Belle & Cherie está ubicada en Bogotá.
+Sin embargo estas plantillas y el curso de uñas es 100% virtual.
+El material se entrega en videos grabados y los cuadernillos de practica,  guias y plantillas  son en PDF que podrás abrir fácilmente desde tu celular o computador.
 
 ENVÍOS:
 
-Se realizan envíos GRATIS a toda Colombia.
+Tan pronto realices el pago de tu aporte del material te enviaremos el material videos grabados y los cuadernillos de practica,  guias y plantillas  son en PDF que podrás abrir fácilmente desde tu celular o computador. A este mismo whatsapp
 
-El envío se realiza por Interrapidísimo.
 
 El tiempo de entrega es de:
 
-2 a 3 días hábiles para ciudades principales.
-
-Hasta 5 días hábiles para municipios o ciudades apartadas.
+Inmediato
 
 MEDIOS DE PAGO:
 
@@ -163,11 +148,9 @@ Daviplata.
 
 Bre-B.
 
-Pago contra entrega.
+Llave
 
-HIPOALERGÉNICAS:
 
-Las Pestañas Flora son hipoalergénicas y están pensadas para cuidar la piel y las pestañas.
 
 IMPORTANTE SOBRE LA VENTA:
 
@@ -232,11 +215,11 @@ function cierreCompra() {
 
   const cierres = [
 
-    `💖 Puedes comprar por Nequi, Daviplata, Bre-B o Contra Entrega. ¿Qué método prefieres?`,
+    `💖 Puedes comprar nuestro material de belleza por Nequi, Daviplata, Bre-B o Contra Entrega. ¿Qué método prefieres?`,
 
-    `✨ Puedes realizar tu pedido por Nequi, Daviplata, Bre-B o Contra Entrega. El envío es GRATIS.`,
+    `✨ Puedes realizar el pago de nuestro material de belleza por Nequi, Daviplata, Bre-B o Contra Entrega. El envío es GRATIS.`,
 
-    `🌸 Para realizar tu pedido puedes pagar por Nequi, Daviplata, Bre-B o Contra Entrega.`
+    `🌸 Para realizar tu compra de nuestro material de belleza puedes pagar por Nequi, Daviplata, Bre-B o Contra Entrega.`
 
   ];
 
@@ -296,17 +279,17 @@ function respuestaDirecta(textoNormalizado) {
     textoNormalizado.includes("oferta") ||
     textoNormalizado.includes("promocion") ||
     textoNormalizado.includes("descuento") ||
-    textoNormalizado.includes("74900") ||
-    textoNormalizado.includes("119900")
+    textoNormalizado.includes("15000") ||
+    textoNormalizado.includes("79900")
   ) {
 
     const respuestas = [
 
-      "💖 Hoy tienen un precio especial de $74.900 (antes $119.900). Incluyen 120 piezas y envío GRATIS.",
+      "💖 Hoy  nuestro material digital tiene un precio especial de $15.900 (antes $79.900). Muchas Chicas ya están generando dinero con estas plantillas.",
 
-      "✨ Las Pestañas Flora tienen un precio especial de $74.900. Antes costaban $119.900 y el envío es GRATIS.",
+      "✨ Las Plantillas de Uña tienen un precio especial de $15.000. Antes costaban $79.900 y el envío  lo recibes aquí a tu whatsapp.",
 
-      "🌸 Hoy puedes llevar tus Pestañas Flora por $74.900. Incluyen 120 piezas autoadhesivas y envío GRATIS."
+      "🌸 Hoy puedes llevar tus Plantillas de Uñas y Curso completo paso a paso  por $15.000. Tan pronto realices tu pago te lo enviaremos al whatsapp."
 
     ];
 
@@ -334,11 +317,11 @@ function respuestaDirecta(textoNormalizado) {
 
     const respuestas = [
 
-      "✨ ¡Es muy fácil! Colócalas debajo de tus pestañas naturales con una pinza. Estarán listas en menos de 2 minutos.",
+      "✨ ¡Es muy fácil! Imprime el material  y empieza a practicar.En una papeleria te lo imprimen por muy pcooy en menos de 2 minutos.",
 
-      "💖 No necesitas experiencia. Toma la pestaña con una pinza, colócala debajo de tus pestañas y presiona suavemente.",
+      "💖 No necesitas experiencia. Muchas chicas están generando 500 MIL pesos a al semana con nuestras plantillas y siguiendo nuestro método de uñas.",
 
-      "🌸 Son muy fáciles de colocar. Puedes hacerlo tú misma y tenerlas listas en menos de 2 minutos."
+      "🌸 Es muy fáciles de aprender . Puedes hacerlo tú misma y tenerlas listas  las uñas de tus clientas en menos de 45 minutos."
 
     ];
 
