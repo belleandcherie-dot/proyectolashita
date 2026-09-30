@@ -77,7 +77,7 @@ Más de 500 Plantillas Digitales de Manicure y Curso  Virtual en Video de Uñas
 
 PRECIO:
 
-Precio actual: $15.000 COP.
+Precio actual: $10.000 COP.
 
 Precio anterior: $79.900 COP.
 
@@ -285,11 +285,11 @@ function respuestaDirecta(textoNormalizado) {
 
     const respuestas = [
 
-      "💖 Hoy  nuestro material digital tiene un precio especial de $15.900 (antes $79.900). Muchas Chicas ya están generando dinero con estas plantillas.",
+      "💖 Hoy  nuestras plantillas cuestan $10 Mil , pero si quieres el combo que incluye curso paso a paso en Video de uñas ,tiene un precio especial de $15.000 (antes $99.900). Muchas Chicas ya están generando dinero con estas plantillas.",
 
-      "✨ Las Plantillas de Uña tienen un precio especial de $15.000. Antes costaban $79.900 y el envío  lo recibes aquí a tu whatsapp.",
+      "✨ Las Plantillas cuestan $10 Mil , pero si quieres el combo que incluye curso paso a paso en Video de uñas ,tiene un precio especial de $15.000 (antes $99.900) y el envío  lo recibes aquí a tu whatsapp.",
 
-      "🌸 Hoy puedes llevar tus Plantillas de Uñas y Curso completo paso a paso  por $15.000. Tan pronto realices tu pago te lo enviaremos al whatsapp."
+      "🌸 Hoy puedes llevar tus Plantillas de Uñas y Curso completo paso a paso  por $15.000. Si quieres solo las plantillas cuestan $10 Mil pesos, Tan pronto realices tu pago te lo enviaremos al whatsapp."
 
     ];
 
